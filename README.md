@@ -3,14 +3,14 @@ In image processing and computer vision, anisotropic diffusion, also called Pero
 
 Although the resulting family of images can be described as a combination between the original image and space-variant filters, the locally adapted filter and its combination with the image do not have to be realized in practice. Anisotropic diffusion is normally implemented by means of an approximation of the generalized diffusion equation: each new image in the family is computed by applying this equation to the previous image. Consequently, anisotropic diffusion is an iterative process where a relatively simple set of computation are used to compute each successive image in the family and this process is continued until a sufficient degree of smoothing is obtained.
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/img.png)
+![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/img.png)
 
 https://en.wikipedia.org/wiki/Anisotropic_diffusion
 
 ## Definition
-Let  ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/omega.png)  denote a subset of the plane and  ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/function.png)  be a family of gray scale images. Then anisotropic diffusion is defined as:
+Let  ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/omega.png)  denote a subset of the plane and  ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/function.png)  be a family of gray scale images. Then anisotropic diffusion is defined as:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/definition.png)
+![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/definition.png)
 
 t represents each iteration, being I(.,0) the input image.
 
@@ -19,15 +19,15 @@ c, the diffusion coefficient, controls the rate of diffusion and is usually chos
 ### Final formula
 In practise, we work with the final formula which is the following:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/finalFormula.png)
+![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/finalFormula.png)
 
-Where  ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/lambda.png)
+Where  ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/lambda.png)
 
 If you want to know where it comes from, check it out in the original paper: https://ieeexplore.ieee.org/document/56205
 
 The function used for the diffusion coefficient:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion/blob/main/img/g.png)
+![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/g.png)
 
 the constant K controls the sensitivity to edges and is usually chosen experimentally or as a function of the noise in the image.
 
@@ -37,3 +37,5 @@ the constant K controls the sensitivity to edges and is usually chosen experimen
     <td><img src="./img/coefficients.png" width = 175px height = 133px></td>
   </tr>
 </table>
+
+We consider pixels (its color) as temperature
