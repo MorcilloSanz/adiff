@@ -78,6 +78,8 @@ Doing some calcs we finally get:
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/filterInequation.png)
 
+The pixels of the image that satisfy the inequation are considered as edges (white). Those that do not are not edges (black).
+
 (This is a solution that I invented, for sure exist better ones)
 
 ## See also
