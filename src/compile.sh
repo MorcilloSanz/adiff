@@ -1,1 +1,1 @@
-g++ -std=c++11 diffusion/AnisotropicDiffusion.cc image/ImageTools.cc main.cc -o AnisotropicDiffusion
+g++ -std=c++11 diffusion/AnisotropicDiffusion.cc edges/EdgeDetector.cc image/ImageTools.cc main.cc -o AnisotropicDiffusion

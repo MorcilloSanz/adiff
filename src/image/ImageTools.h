@@ -10,10 +10,10 @@ public:
         std::vector<unsigned char> buffer;
         int width, height;
         int bpp;
-
+        
+        Image(const std::string& _path, const std::vector<unsigned char>& _buffer, int _width, int _height, int _bpp);
+        Image(int _width, int _height, int _bpp);
         Image() = default;
-        Image(const std::string& _path, const std::vector<unsigned char>& _buffer, int _width, int _height, int _bpp)
-            : path(_path), buffer(_buffer), width(_width), height(_height), bpp(_bpp) { }
         ~Image() = default;
     };
 public:
