@@ -26,7 +26,7 @@ be a family of gray scale images. Then anisotropic diffusion is defined as:
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/definition.png)
 
-Where **Δ** denotes the Laplacian, **∇** denotes the gradient, **div(...)** is the divergence and **c(x,y,t)** is the diffusion coefficient which controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image.
+Where **Δ** denotes the Laplacian, **∇** denotes the gradient, **∇ .** is the divergence and **c(x,y,t)** is the diffusion coefficient which controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image.
 
 **t** represents each iteration, being **I(.,0)** the input image.
 For **t>0**, the output image is available as **I(.,t)** with larger **t** producing blurrier images.
