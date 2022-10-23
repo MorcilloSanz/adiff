@@ -64,24 +64,6 @@ For each difference, we need a diffusion coefficient that will be multiplied by 
 In the **edges**, the color variation is bigger and as the color variation becomes bigger, **c** becomes smaller, so **the product between c and the color variation approximates to 0**.
 When this happens, **I(t+1) = I(t) + λ * 0**, and those pixels from the edge are the same as before. This is why the anisotropic diffusion makes edges sharper.
 
-# Edge Detector
-
-[Edge Detector](https://github.com/MorcilloSanz/EdgeDetector)
-
-**∇m = (∇mx, ∇my)** is a vector where **∇mx** is the maximum color variation with respect to x and **∇my** with respect to y
-
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/filterDefinition.png)
-
-τ is the tolerance param (0 <= τ <= 1), the more smaller τ is, more edges are detected
-
-Doing some calcs we finally get:
-
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/filterInequation.png)
-
-The pixels of the image that satisfy the inequation are considered as edges (white). Those that do not are not edges (black).
-
-(This is a solution that I invented, for sure exist better ones)
-
 ## See also
 [Diffusion equation](https://en.wikipedia.org/wiki/Diffusion_equation)
 

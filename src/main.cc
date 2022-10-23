@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "diffusion/AnisotropicDiffusion.h"
-#include "edges/EdgeDetector.h"
 
 int main() {
 
@@ -17,14 +16,6 @@ int main() {
 
     // Save output
     ImageTools::savePNG(anisotropicDiffusion.getImage(), "output.png");
-
-    // Edges
-    double tau = 0.08; // 0 <= tau <= 1
-    EdgeDetector edgeDetector(image, tau);
-    edgeDetector.applyFilter();
-
-    // Save output
-    ImageTools::savePNG(edgeDetector.getOutputImage(), "output-edges.png");
 
     return 0;
 }
