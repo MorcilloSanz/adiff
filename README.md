@@ -14,24 +14,16 @@ Original paper: https://ieeexplore.ieee.org/document/56205
 https://en.wikipedia.org/wiki/Anisotropic_diffusion
 
 ## Formal Definition
-Let  
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/omega.png)  
+Let $\Omega \subset \mathbb{R}^{2}$ denote a subset of the plane and $I(\cdot, t) : \Omega \rightarrow \mathbb{R}$ be a be a family of gray scale images. Then anisotropic diffusion is defined as:
 
-denote a subset of the plane and  
+$$\frac{\partial I}{\partial t} = \nabla \cdot \left[ c(\left|| \nabla I\right||) \nabla I \right] = \nabla c \cdot \nabla I + c(\left|| \nabla I\right||) \Delta I$$
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/function.png)  
+Where $\Delta$ denotes the Laplacian, $\nabla$ denotes the gradient, $\nabla \cdot$ is the divergence and $c(x)$ is the diffusion coefficient which controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image.
 
-be a family of gray scale images. Then anisotropic diffusion is defined as:
+$t$ represents each iteration, being $I(\cdot,0)$ the input image. For $t>0$, the output image is available as $I(\cdot,t)$ with larger $t$ producing blurrier images.
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/definition.png)
-
-Where **Δ** denotes the Laplacian, **∇** denotes the gradient, **∇ .** is the divergence and **c(x,y,t)** is the diffusion coefficient which controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image.
-
-**t** represents each iteration, being **I(.,0)** the input image.
-For **t>0**, the output image is available as **I(.,t)** with larger **t** producing blurrier images.
-
-### Final formula
+## Discretization
 
 Discrete Laplace operator is often used in image processing e.g. in edge detection and motion estimation applications. The discrete Laplacian is defined as the sum of the second derivatives Laplace operator Coordinate expressions and calculated as sum of differences over the nearest neighbours of the central pixel. Since derivative filters are often sensitive to noise in an image, the Laplace operator is often preceded by a smoothing filter (such as a Gaussian filter) in order to remove the noise before calculating the derivative. The smoothing filter and Laplace filter are often combined into a single filter.
 
@@ -39,30 +31,39 @@ Discrete Laplace operator is often used in image processing e.g. in edge detecti
 
 The diffusion equation can be discretized on a square lattice, with brightness values associated to the vertices, and conduction coefficients to the arcs. A 4-nearest neighbors discretization of the Lapalacian operator can be used:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/finalFormula.png)
+>This is the final equation which we have to solve
 
-Where  
+$$I^{t+1}_{i,j} = I^{t}_{i,j} + \lambda \left[ c_{N} \cdot \triangledown_{N}I + c_{S} \cdot \triangledown_{S}I + c_{E} \cdot \triangledown_{E}I + c_{W} \cdot \triangledown_{W}I \right]^{t}_{i,j}$$
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/lambda.png)
+Where $0 \leq \lambda \leq \frac{1}{4}$
 
-If you want to know the process of obtaining this formula, check it out in the original paper.
+## Function for the diffusion coefficient
 
-### The function used for the diffusion coefficient
+the constant $k$ controls the sensitivity to edges and is usually chosen experimentally or as a function of the noise in the image. The diffusion coefficient is given by:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/g.png)
-
-the constant K controls the sensitivity to edges and is usually chosen experimentally or as a function of the noise in the image.
+$$c(x) = e^{-\left( \frac{x}{k} \right)^{2}}$$
 
 In order to get the differences, we get the color increment from the neighboring pixels in four directions (North, South, East and West)
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/increments.png)
+$$\triangledown_{N}I^{t}_{i, j} \equiv  I^{t}_{i, j - 1} - I^{t}_{i, j}$$
 
-For each difference, we need a diffusion coefficient that will be multiplied by in the final formula:
+$$\triangledown_{S}I^{t}_{i, j} \equiv  I^{t}_{i, j + 1} - I^{t}_{i, j}$$
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/coefficients.png)
+$$\triangledown_{E}I^{t}_{i, j} \equiv  I^{t}_{i + 1, j} - I^{t}_{i, j}$$
 
-In the **edges**, the color variation is bigger and as the color variation becomes bigger, **c** becomes smaller, so **the product between c and the color variation approximates to 0**.
-When this happens, **I(t+1) = I(t) + λ * 0**, and those pixels from the edge are the same as before. This is why the anisotropic diffusion makes edges sharper.
+$$\triangledown_{W}I^{t}_{i, j} \equiv  I^{t}_{i - 1, j} - I^{t}_{i, j}$$
+
+For each difference, we need a diffusion coefficient that will be multiplied by in the final equation:
+
+$$c^{t}_{N_{i, j}} = c \left( \left| \triangledown_{N}I^{t}_{i, j} \right|\right)$$
+
+$$c^{t}_{S_{i, j}} = c \left( \left| \triangledown_{S}I^{t}_{i, j} \right|\right)$$
+
+$$c^{t}_{E_{i, j}} = c \left( \left| \triangledown_{E}I^{t}_{i, j} \right|\right)$$
+
+$$c^{t}_{W_{i, j}} = c \left( \left| \triangledown_{W}I^{t}_{i, j} \right|\right)$$
+
+In the edges, the color variation is bigger and as the color variation becomes bigger, $c$ becomes smaller, so the product between $c$ and the color variation approximates to $0$. When this happens, $I_{t+1} = I_{t} + \lambda \cdot 0$, and those pixels from the edge are the same as before. This is why the anisotropic diffusion makes edges sharper.
 
 ## See also
 [Diffusion equation](https://en.wikipedia.org/wiki/Diffusion_equation)
