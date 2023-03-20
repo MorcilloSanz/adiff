@@ -63,13 +63,13 @@ $$\triangledown_{W}I^{t}_{i, j} \equiv  I^{t}_{i - 1, j} - I^{t}_{i, j}$$
 
 For each difference, we need a diffusion coefficient that will be multiplied by in the final equation:
 
-$$c^{t}_{N_{i, j}} = c \left( \left| \triangledown_{N}I^{t}_{i, j} \right|\right)$$
+$$c^{t}_{N_{i, j}} = c \left(|\triangledown_{N}I^{t}_{i, j}|\right)$$
 
-$$c^{t}_{S_{i, j}} = c \left( \left| \triangledown_{S}I^{t}_{i, j} \right|\right)$$
+$$c^{t}_{S_{i, j}} = c \left(|\triangledown_{S}I^{t}_{i, j}|\right)$$
 
-$$c^{t}_{E_{i, j}} = c \left( \left| \triangledown_{E}I^{t}_{i, j} \right|\right)$$
+$$c^{t}_{E_{i, j}} = c \left(|\triangledown_{E}I^{t}_{i, j}|\right)$$
 
-$$c^{t}_{W_{i, j}} = c \left( \left| \triangledown_{W}I^{t}_{i, j} \right|\right)$$
+$$c^{t}_{W_{i, j}} = c \left(|\triangledown_{W}I^{t}_{i, j}|\right)$$
 
 In the edges, the color variation is bigger and as the color variation becomes bigger, $c$ becomes smaller, so the product between $c$ and the color variation approximates to $0$. When this happens, $I_{t+1} = I_{t} + \lambda \cdot 0$, and those pixels from the edge are the same as before. This is why the anisotropic diffusion makes edges sharper.
 
