@@ -19,6 +19,14 @@ Let $\Omega \subset \mathbb{R}^{2}$ denote a subset of the plane and $I(\cdot, t
 
 $$\frac{\partial I}{\partial t} = \nabla \cdot \left[ c(\left|| \nabla I\right||) \nabla I \right] = \nabla c \cdot \nabla I + c(\left|| \nabla I\right||) \Delta I$$
 
+The gradient of $I$ is defined as
+
+$$\nabla I = \left( \frac{\partial I}{\partial x}, \frac{\partial I}{\partial y} \right)$$
+
+Where $\Delta I$ is the Laplacian of the function $I$
+
+$$\Delta I = \sum_{i=1}^{n}\frac{\partial^{2} I}{\partial x^{2}_{i}} = \frac{\partial^{2}I}{\partial x^{2}} + \frac{\partial^{2}I}{\partial y^{2}}$$
+
 Where $\Delta$ denotes the Laplacian, $\nabla$ denotes the gradient, $\nabla \cdot$ is the divergence and $c(x)$ is the diffusion coefficient which controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image.
 
 $t$ represents each iteration, being $I(\cdot,0)$ the input image. For $t>0$, the output image is available as $I(\cdot,t)$ with larger $t$ producing blurrier images.
