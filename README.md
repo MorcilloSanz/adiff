@@ -17,15 +17,21 @@ https://en.wikipedia.org/wiki/Anisotropic_diffusion
 
 Let $\Omega \subset \mathbb{R}^{2}$ denote a subset of the plane and $I(\cdot, t) : \Omega \rightarrow \mathbb{R}$ be a be a family of gray scale images. Then anisotropic diffusion is defined as:
 
+```math
 $$\frac{\partial I}{\partial t} = \nabla \cdot \left[ c(\left|| \nabla I\right||) \nabla I \right] = \nabla c \cdot \nabla I + c(\left|| \nabla I\right||) \Delta I$$
+```
 
 The gradient of $I$ is defined as
 
+```math
 $$\nabla I = \left( \frac{\partial I}{\partial x}, \frac{\partial I}{\partial y} \right)$$
+```
 
 Where $\Delta I$ is the Laplacian of the function $I$
 
+```math
 $$\Delta I = \sum_{i=1}^{n}\frac{\partial^{2} I}{\partial x^{2}_{i}} = \frac{\partial^{2}I}{\partial x^{2}} + \frac{\partial^{2}I}{\partial y^{2}}$$
+```
 
 Where $\Delta$ denotes the Laplacian, $\nabla$ denotes the gradient, $\nabla \cdot$ is the divergence and $c(x)$ is the diffusion coefficient which controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image.
 
@@ -41,7 +47,9 @@ The diffusion equation can be discretized on a square lattice, with brightness v
 
 >This is the final equation which we have to solve
 
+```math
 $$I^{t+1}_{i,j} = I^{t}_{i,j} + \lambda \left[ c_{N} \cdot \triangledown_{N}I + c_{S} \cdot \triangledown_{S}I + c_{E} \cdot \triangledown_{E}I + c_{W} \cdot \triangledown_{W}I \right]^{t}_{i,j}$$
+```
 
 Where $0 \leq \lambda \leq \frac{1}{4}$
 
@@ -49,27 +57,39 @@ Where $0 \leq \lambda \leq \frac{1}{4}$
 
 the constant $k$ controls the sensitivity to edges and is usually chosen experimentally or as a function of the noise in the image. The diffusion coefficient is given by:
 
+```math
 $$c(x) = e^{-\left( \frac{x}{k} \right)^{2}}$$
+```
 
 In order to get the differences, we get the color increment from the neighboring pixels in four directions (North, South, East and West)
 
+```math
 $$\triangledown_{N}I^{t}_{i, j} \equiv  I^{t}_{i, j - 1} - I^{t}_{i, j}$$
-
+```
+```math
 $$\triangledown_{S}I^{t}_{i, j} \equiv  I^{t}_{i, j + 1} - I^{t}_{i, j}$$
-
+```
+```math
 $$\triangledown_{E}I^{t}_{i, j} \equiv  I^{t}_{i + 1, j} - I^{t}_{i, j}$$
-
+```
+```math
 $$\triangledown_{W}I^{t}_{i, j} \equiv  I^{t}_{i - 1, j} - I^{t}_{i, j}$$
+```
 
 For each difference, we need a diffusion coefficient that will be multiplied by in the final equation:
 
+```math
 $$c^{t}_{N_{i, j}} = c \left(|\triangledown_{N}I^{t}_{i, j}|\right)$$
-
+```
+```math
 $$c^{t}_{S_{i, j}} = c \left(|\triangledown_{S}I^{t}_{i, j}|\right)$$
-
+```
+```math
 $$c^{t}_{E_{i, j}} = c \left(|\triangledown_{E}I^{t}_{i, j}|\right)$$
-
+```
+```math
 $$c^{t}_{W_{i, j}} = c \left(|\triangledown_{W}I^{t}_{i, j}|\right)$$
+```
 
 In the edges, the color variation is bigger and as the color variation becomes bigger, $c$ becomes smaller, so the product between $c$ and the color variation approximates to $0$. When this happens, $I_{t+1} = I_{t} + \lambda \cdot 0$, and those pixels from the edge are the same as before. This is why the anisotropic diffusion makes edges sharper.
 
