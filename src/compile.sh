@@ -1,1 +1,0 @@
-g++ -std=c++11 diffusion/AnisotropicDiffusion.cc image/ImageTools.cc main.cc -o AnisotropicDiffusion
