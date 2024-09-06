@@ -21,13 +21,7 @@ Let $\Omega \subset \mathbb{R}^{2}$ denote a subset of the plane and $I(\cdot, t
 $$\frac{\partial I}{\partial t} = \nabla \cdot \left[ c(\left|| \nabla I\right||) \nabla I \right] = \nabla c \cdot \nabla I + c(\left|| \nabla I\right||) \Delta I$$
 ```
 
-The gradient of $I$ is defined as
-
-```math
-$$\nabla I = \left( \frac{\partial I}{\partial x}, \frac{\partial I}{\partial y} \right)$$
-```
-
-Where $\Delta I$ is the Laplacian of the function $I$
+Where $\nabla \cdot$ is the divergence $\nabla$ is the gradient and $\Delta$ is the Laplacian.
 
 ```math
 $$\Delta I = \sum_{i=1}^{n}\frac{\partial^{2} I}{\partial x^{2}_{i}} = \frac{\partial^{2}I}{\partial x^{2}} + \frac{\partial^{2}I}{\partial y^{2}}$$
