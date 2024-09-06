@@ -3,7 +3,26 @@ In image processing and computer vision, anisotropic diffusion, also called Pero
 
 Although the resulting family of images can be described as a combination between the original image and space-variant filters, the locally adapted filter and its combination with the image do not have to be realized in practice. Anisotropic diffusion is normally implemented by means of an approximation of the generalized diffusion equation: each new image in the family is computed by applying this equation to the previous image. Consequently, anisotropic diffusion is an iterative process where a relatively simple set of computation are used to compute each successive image in the family and this process is continued until a sufficient degree of smoothing is obtained.
 
-**Source code output**
+```c
+#include <stdio.h>
+
+#include <adiff/filter/filter.h>
+
+int main() {
+
+    ADIFF_IMAGE image = adiff_load_png("albert-einstein.png");
+
+    adiff_grey_filter(&image);
+    adiff_anisotropic_diffusion_filter(&image, 50, 0.20, 10);
+
+    adiff_save_png(&image, "output.png");
+    adiff_free_image(&image);
+
+    return 0;
+}
+```
+
+**Test code output**
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion-Image/blob/main/img/img.png)  
 
